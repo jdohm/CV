@@ -1,0 +1,78 @@
+\documentclass[10pt,a4paper]{scrlttr2}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+%------------------------------- Math -------------------------------------------------%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%------------------------------- Units ------------------------------------------------%
+\usepackage[per-mode=fraction,binary-units,locale=DE,complex-root-position =
+before-number,scientific-notation=false,range-phrase ={\ bis\ },list-units=single,range-units=single]{siunitx}
+%für das einfügen von Einheiten z.b. \si{\ohm} | per-mode=symbol setzt / anstelle von ^{-1}; fraction setzt \frac
+%binary-units allows \bit \mibi etc
+%locale=DE switches \num{1.5} to 1,5 ...
+\sisetup{output-complex-root=\ensuremath{\mathrm{j}}}
+%nutzt für imaginäre Zahlen das j, wie in der Elektrotechnik üblich
+\usepackage{eurosym} % Für ein Vernünftiges Euro Zeichen mittels \euro
+% € führt zu komischem Ergebnis...
+\DeclareSIUnit{\EUR}{\text{\euro}} % Ermöglicht \EUR als Einheit zu nutzen
+%------------------------------- Drawing ----------------------------------------------%
+\usepackage{tikz}
+\usetikzlibrary{3d}
+\usetikzlibrary{calc}
+\usepackage[european, siunitx, nooldvoltagedirection]{circuitikz}
+%ermöglicht das Zeichnen von Schaltplänen in tikzpicture z.b.(0,0) to[R=$R_1$,v=$1\si{\volt}$] (2,0);
+%european für europäische Symbole (z.B. Resistor)
+%siunitx um mit 5<A> die korrekte Schreibweise innerhalb von Stromlaufplänen zu erhalten
+\usetikzlibrary{decorations.pathmorphing}%für snake arrow
+\usepackage{graphicx}% um Bilder einbinden zu können 
+\usepackage{float}%für das Darstellen von figures, bildern etc. an genau diesem Ort [H]
+\newcommand\arr[1][0]{node[inputarrow,rotate=#1]{}}%ermöglicht in Tikz mit dem Paket circuitikz das einfügen einer Pfeilspitze an der aktuellen Position \arr zeigt nach rechts, \arr[90] nach oben...
+%------------------------------- Settings ---------------------------------------------%
+%\author{Jannis Dohm}
+%\title{CV - Page 1}
+%------------------------------- KOMA-Settings ----------------------------------------%
+\KOMAoptions{
+        paper=a4,
+        pagenumber=botright,
+        %fromalign=right,
+        %fromrule=afteraddress,
+        fromphone,
+%       fromfax,
+        fromlogo,
+        %fromurl,
+        fromemail,
+        backaddress,
+        foldmarks,
+%        headsepline,footsepline,
+        enlargefirstpage
+}
+\setkomavar{fromname}{Jannis Dohm}
+\setkomavar{fromaddress}{L\"utkendorpweg~16\\44805~Bochum}
+\setkomavar{fromphone}{+49\,176\,913\,463\,54}
+%\setkomavar{fromfax}{}
+\setkomavar{fromemail}{dohm@posteo.net}
+%\setkomavar*{emailseparator}{E-Mail}
+%\setkomavar{emailseparator}{:\ }
+%\setkomavar{fromurl}{}
+%\setkomavar*{urlseparator}{}
+%\setkomavar{urlseparator}{}
+%\setkomavar{frombank}{Eine Bank\\BLZ~123\,45\,678\\Kto~123456789}
+\setkomavar{place}{Bochum}
+\setkomavar{fromlogo}{\parbox[b]{8cm}{\usekomafont{fromaddress}%
+        {\mbox{\LARGE \bfseries Jannis Dohm}}
+        \smallskip}
+}
+\setkomafont{backaddress}{\sffamily}
+\setkomafont{fromaddress}{\sffamily}
+\addtokomafont{fromname}{\scriptsize}
+\addtokomafont{fromaddress}{\scriptsize}
+\pagestyle{headings}
+\begin{document}%\pagestyle{empty}
+\begin{letter}{Test Name\\ Test Street 123\\444xx Wuppertal}
+\opening{Sehr geehrter Herr}
+		\closing{Mit freundlichen Grüßen}
+    \input{background/page1/background1.tex}
+\end{letter}
+\end{document}
