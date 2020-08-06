@@ -60,10 +60,20 @@ before-number,scientific-notation=false,range-phrase ={\ bis\ },list-units=singl
 %\setkomavar{urlseparator}{}
 %\setkomavar{frombank}{Eine Bank\\BLZ~123\,45\,678\\Kto~123456789}
 \setkomavar{place}{Bochum}
-\setkomavar{fromlogo}{\parbox[b]{8cm}{\usekomafont{fromaddress}%
-        {\mbox{\LARGE \bfseries Jannis Dohm}}
-        \smallskip}
-}
+%\setkomavar{fromlogo}{
+  %\parbox[b]{7cm}{\usekomafont{fromaddress}%
+ %{\mbox{\includegraphics[
+  %width=15cm,
+  %height=5cm,
+  %keepaspectratio]{073-020-Dohm-038_small.jpg}}}
+ %%       {\mbox{\LARGE \bfseries Jannis Dohm}}
+         %\smallskip
+   %}
+ %}
+ \setkomavar{fromlogo}{\tikz[overlay,remember picture]
+      \node [anchor = north east, inner sep = .92cm, xshift=-.45cm]
+            at (current page.north east)
+            {\includegraphics[height=5cm]{073-020-Dohm-038_small.jpg}};}
 \setkomafont{backaddress}{\sffamily}
 \setkomafont{fromaddress}{\sffamily}
 \addtokomafont{fromname}{\scriptsize}
@@ -71,8 +81,8 @@ before-number,scientific-notation=false,range-phrase ={\ bis\ },list-units=singl
 \pagestyle{headings}
 \begin{document}%\pagestyle{empty}
 \begin{letter}{Test Name\\ Test Street 123\\444xx Wuppertal}
+    \input{background/page1/background1.tex}
 \opening{Sehr geehrter Herr}
 		\closing{Mit freundlichen Grüßen}
-    \input{background/page1/background1.tex}
 \end{letter}
 \end{document}

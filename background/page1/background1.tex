@@ -1,3 +1,18 @@
+\begin{tikzpicture}[remember picture,overlay,opacity=.05,thick,scale=1.5, every node/.style={scale=1.5}]
+  %\foreach \z in (1,2,...,27){
+  \foreach \y in {1,2,...,39}{
+	  \foreach \x in {1,2,...,27}{
+	    \draw (current page.north west)+(\x*.5,-\y*.5+.25) node{$D\Omega$};
+	    \draw (current page.north west)+(\x*.5,-\y*.5) node{$\Omega D$};
+	  }
+}
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay,opacity=1,thick]
+  \filldraw[white, rounded corners](current page.north west)+(20mm,-45mm) rectangle +(105mm,-90mm);
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay,opacity=.4,thick]
+  \draw[line width=1.5mm] (current page.north west)+(5mm,-44mm) circle (1.5mm) +(6.5mm,-44mm)-- +(105mm,-44mm) -- +(120mm,-60mm) -- +(196.4mm,-60mm);
+\end{tikzpicture}
 \begin{tikzpicture}[remember picture,overlay]
   \begin{scope}[shift={($(current page.south west)+(1.5,4.5)$)},opacity=.5]
   \draw (0,-3)node[rground]{}
