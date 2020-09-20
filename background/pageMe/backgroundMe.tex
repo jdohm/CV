@@ -1,0 +1,36 @@
+\begin{tikzpicture}[remember picture,overlay,opacity=.05,thick,scale=1.5, every node/.style={scale=1.5}]
+  %\foreach \z in (1,2,...,27){
+  \foreach \y in {1,2,...,39}{
+	  \foreach \x in {1,2,...,27}{
+	    \draw (current page.north west)+(\x*.5,-\y*.5+.25) node{$D\Omega$};
+	    \draw (current page.north west)+(\x*.5,-\y*.5) node{$\Omega D$};
+	  }
+}
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay,opacity=1,thick]
+  \filldraw[white, rounded corners](current page.north west)+(20mm,-45mm) rectangle +(105mm,-90mm);
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay,opacity=.4,thick]
+  \draw[line width=1.5mm] (current page.north west)+(5mm,-44mm) circle (1.5mm) +(6.5mm,-44mm)-- +(105mm,-44mm) -- +(120mm,-60mm) -- +(196.4mm,-60mm);
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay]
+  \begin{scope}[shift={($(current page.south west)+(1.5,4.5)$)},opacity=.5]
+  \draw (0,-3)node[rground]{}
+  to[sqV,l={\SI{1}{\hertz}}] (0,0);
+  \draw  (4,0)node[buffer port](notP){}(0,0) -- (notP.in);
+  \draw (notP.bout) node[ocirc,right](not){};
+  \begin{scope}[shift={(12,-1.45)}]%7-Segment
+  \ctikzset{seven seg/color on=black!30, seven seg/color off=white}
+  \draw (0,0)node[seven segment val=8 dot off box off]{}
+  (-.75,-1.25) rectangle (.75,1.25);
+  \foreach \x/\y in {1/a,2/b,3/c,4/d,5/e,6/f,7/g}{
+    \draw (-.75,1.25-\x*.3) node[right]{\y}-- (-1,1.25-\x*.3) coordinate(\y);
+  }
+  \end{scope}
+  \draw (e)  +(-2.5,2.0) node[vcc](vcc){} node[left]{VCC};
+  \draw (vcc) |- (a) (vcc) |- (e) (vcc) |- (f);
+  \draw (notP.out) -- +(1,0) |- (b) (notP.out) +(1,0) |- (c);
+  \draw (2,0) |- (d) (2,0) |- (g);
+  %\draw (current page.north west) - - (g);
+  \end{scope}
+\end{tikzpicture}
