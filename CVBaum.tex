@@ -1,0 +1,106 @@
+\documentclass[10pt,a4paper]{standalone}
+\input{media/include}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usetikzlibrary{shapes.multipart}
+
+%-----------PDF einstellungen:
+\hypersetup{
+	pdftitle    = {Titel},
+	pdfsubject  = {Um was geht es },
+	pdfauthor   = {Autor bzw. Autoren},
+	pdfkeywords = {Stichwort1, Stichwort2 ...} ,
+	pdfcreator  = {Mit welcher Anwendung i.d.R. pdflatex},
+	pdfproducer = {LaTeX with hyperref}
+}%----------------------------
+
+\definecolor{darkorange}{RGB}{255,75,0}
+\definecolor{darkgreen}{RGB}{0,175,0}
+\definecolor{green}{RGB}{0,175,0}
+
+\title{Titel}
+\author{Jannis Dohm}
+\begin{document}
+\begin{tikzpicture}	
+  %points
+  \draw (0,0) coordinate (birth)+(-.25,0)node[left]{8.1.1990}
+  (0,-0*2-8/6) coordinate (82010)+(-.25,0)node[left]{8.2010}
+  (0,-3*2-5/6) coordinate (52013)+(-.25,0)node[left]{5.2013}
+  (0,-3*2-9/6) coordinate (92013)+(-.25,0)node[left]{9.2013}
+  (0,-5*2-7/6) coordinate (72015)+(-.25,0)node[left]{7.2015}
+  (0,-5*2-6/6) coordinate (62015)
+  (0,-5*2-10/6) coordinate (102015)+(-.25,0)node[left]{10.2015}
+  (0,-6*2-12/6) coordinate (122016)+(-.25,0)node[left]{12.2016}
+  (0,-7*2-6/6) coordinate (62017)+(-.25,0)node[left]{6.2017}
+  (0,-8*2-10/6) coordinate (102018)+(-.25,0)node[left]{10.2018}
+  (0,-9*2-2/6) coordinate (22019)+(-.25,0)node[left]{2.2019}
+  (0,-9*2-7/6) coordinate (72019)+(-.25,0)node[left]{7.2019}
+  (0,-9*2-12/6) coordinate (122019)+(-.25,0)node[left]{12.2019}
+  (0,-10*2-11/6) coordinate (112020)+(-.25,0)node[left]{11.2020}
+  ;
+  % Ausbildung
+  \draw[line width=2mm,blue] (82010) -- ($(82010)+(.3,-.3)$) coordinate (mauellA) -- ($(52013)+(.3,.3)$) -- (52013);
+  \draw[line width=2mm,blue] (92013) -- ($(92013)+(.3,-.3)$) coordinate (TBS1) -- ($(62015)+(.3,.3)$) -- (62015);
+  \draw[line width=2mm,blue] (102015) -- ($(102015)+(.3,-.3)$) coordinate (BUWB) -- ($(102018)+(.3,.3)$) -- (102018);
+  \draw[line width=2mm,blue] (102018) -- ($(102018)+(.3,-.3)$) coordinate (BUWB) -- ($(112020)+(.3,.3)$) -- (112020);
+  % Work
+  \draw[line width=2mm,green] (52013) -- ($(52013)+(-.3,-.3)$) coordinate (MauellW) -- ($(72015)+(-.3,.3)$) -- (72015);
+  \draw[line width=2mm,green] (122016) -- ($(122016)+(-.3,-.3)$) coordinate (BUWMat) -- ($(62017)+(-.3,.3)$) -- (62017);
+  \draw[line width=2mm,green] (22019) -- ($(22019)+(-.3,-.3)$) coordinate (BUWEMT) -- ($(72019)+(-.3,.3)$) -- (72019);
+  % Ehrenamt
+  \draw[line width=2mm,orange,opacity=0.8] (62017) -- ($(62017)+(.6,-.6)$) coordinate (GLRD) -- ($(102018)+(.6,.6)$) -- (102018);
+  \draw[line width=2mm,orange,opacity=0.8] (102018) -- ($(102018)+(.6,-.6)$) coordinate (GLRC) -- ($(122019)+(.6,.6)$) -- (122019);
+  \draw[line width=2mm,orange,opacity=0.8,dashed] (102018) -- ($(102018)+(.6,-.6)$) coordinate (VIDZP) -- ($(112020)+(.6,.0)$) ;%-- (122019);
+  % line
+  \draw[line width=2mm] (birth) -- ($(112020)+(0,-1)$);
+  \draw[line width=2mm,dashed,white] ($(birth)+(0,-.50)$) -- ($(82010)+(0,.5)$);
+  \draw[line width=1mm] (0,0) node[circle, minimum size=0.75mm,line width=1mm,draw=black,fill=white](birthX) {}
+%(0,-2) node[circle, minimum size=0.75mm,line width=1.5mm,draw=white](82010x) {}   +(-.25,0)node[left]{8.2010}
+  (82010) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (52013) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (92013) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (72015) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (102015) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (122016) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (62017) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (102018) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (22019) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (72019) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (122019) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {}
+  (112020) node[circle, minimum size=0.75mm,line width=1.25mm,draw=white] {};
+%\node[inner sep=5pt,anchor=north west] (whitehead) at ($(82010)+(1,0)$)
+%    {\includegraphics[width=.25\textwidth]{media/mauell.jpeg}};
+\node[inner sep=5pt,anchor=west,align=left,black] at ($(birth)+(1,0)$){\huge\textbf{Lebenslauf}};
+\node[inner sep=5pt,anchor=east,align=right,black] at ($(birth)+(-1.5,0)$){\huge\textbf{Jannis Dohm}};
+
+%\node[inner sep=5pt,anchor=north east,align=right] at ($(82010)+(-5.5,.750)$) {\includegraphics[height=65mm]{media/073-020-Dohm-015_small.jpg}};
+\node[inner sep=5pt,anchor=north west,align=left,blue] at ($(82010)+(1,0)$) {\includegraphics[height=5mm]{media/mauell.jpeg}\\Bilfinger Mauell GmbH, Velbert \\ Ausbildung - Elektroniker für Ger\"ate und Systeme\\Fachrichtung Mess- und Pr\"uftechnik};%  Ausbildung- Elektroniker für Ger\"a te und Systeme Fachrichtung Mess- und Pr\"u ftechnik};
+\node[inner sep=5pt,anchor=north east,align=right,darkgreen] at ($(52013)+(-1.5,0)$) {\includegraphics[height=5mm]{media/mauell.jpeg}\\Bilfinger Mauell GmbH, Velbert \\ Junior Quality Engineer\\Quality Control, R\&D Department};
+\node[inner sep=5pt,anchor=north west,align=left,blue] at ($(92013)+(1,0)$) {\includegraphics[height=8mm]{media/TBS1.png}\\Technische Berufsschule 1, Bochum \\ Fachabitur - Elektrotechnik};
+\node[inner sep=5pt,anchor=north west,align=left,blue] at ($(102015)+(1,0)$) {\includegraphics[height=8mm]{media/buw.png}\\Bergische Universität Wuppertal, Wuppertal \\ Bachelor - Electrical Engineering};
+\node[inner sep=5pt,anchor=north east,align=right,darkgreen] at ($(122016)+(-1.5,0)$) {\includegraphics[height=8mm]{media/fan.png}\includegraphics[height=8mm]{media/buw.png}\\Bergische Universität Wuppertal, Wuppertal \\ Fakultät für Mathematik und Naturwissenschaften\\Arbeitsgruppe Funktionalanalysis\\Erstellung eines neuen Vorlesungsscriptes};
+\node[inner sep=5pt,anchor=north west,align=left,darkorange] at ($(62017)+(1,0)$) {\includegraphics[height=8mm]{media/glr.jpeg}\\GreenLion Racing Team, Wuppertal \\ Leiter - Projekt Driverless};
+\node[inner sep=5pt,anchor=north west,align=left,blue] at ($(102018)+(1,0)$) {\includegraphics[height=8mm]{media/buw.png}\\Bergische Universität Wuppertal, Wuppertal \\ Master - Electrical Engineering\\Fachrichtung Automotive\\\includegraphics[height=8mm]{media/glr.jpeg}\\\color{darkorange}GreenLion Racing Team, Wuppertal \\\color{darkorange} Leiter\\\includegraphics[height=8mm]{media/vdi.png}\\\color{darkorange}VDI - Bergischer Bezirksverein, Wuppertal \\\color{darkorange} Technische Betreuung der Zukunftspiloten (10-16 Jährige Jugendgruppe)};
+\node[inner sep=5pt,anchor=north east,align=right,darkgreen] at ($(22019)+(-1.5,0)$) {\includegraphics[height=8mm]{media/emt.png}\includegraphics[height=8mm]{media/buw.png}\\Bergische Universität Wuppertal, Wuppertal \\ Fakultät für Elektrotechnik, Informationstechnik und Medientechnik\\Lehrstuhl für Sensorik und messtechnische Systeme\\Entwicklung eines Ladegeräts für ein Kleinspannungs-Antriebssystem};
+% Fähigkeite
+\node[inner sep=5pt,anchor=north east,align=right] at ($(82010)+(-5.5,-1.750)$) {\includegraphics[height=10pt]{media/plus.png} Elektrotechnik};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(82010)+(5.5,-3.750)$) {\includegraphics[height=10pt]{media/plus.png} Assembler};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(82010)+(3.5,-2.50)$) {\includegraphics[height=10pt]{media/plus.png} Veganismuss};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102015)+(-5.5,.50)$) {\includegraphics[height=10pt]{media/plus.png} Englisch};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102015)+(-3.5,2.5)$) {\includegraphics[height=10pt]{media/plus.png} Codesys};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102015)+(-1.5,1.75)$) {\includegraphics[height=10pt]{media/plus.png} Jira \& Confluence};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102015)+(-5.,-.50)$) {\includegraphics[height=10pt]{media/plus.png} C};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102015)+(-5.,-1.50)$) {\includegraphics[height=10pt]{media/plus.png} Java};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102015)+(-3.,-2.)$) {\includegraphics[height=10pt]{media/plus.png} VHDL};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(62017)+(8.5,1.2)$) {\includegraphics[height=10pt]{media/plus.png} Elektromobilität};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(122016)+(5.,-0.250)$) {\includegraphics[height=10pt]{media/plus.png} \LaTeX};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102018)+(9.,1.250)$) {\includegraphics[height=10pt]{media/plus.png} Projektleitung};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102018)+(3.,0.750)$) {\includegraphics[height=10pt]{media/plus.png} Altium};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102018)+(9.,0.750)$) {\includegraphics[height=10pt]{media/plus.png} Entwicklung eines Ladegeräts};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102018)+(-3.,0.750)$) {\includegraphics[height=10pt]{media/plus.png} Catia};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102018)+(7.,-.10)$) {\includegraphics[height=10pt]{media/plus.png} CircuitMaker};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102018)+(8.75,-.45)$) {\includegraphics[height=10pt]{media/plus.png} Teamleitung};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102018)+(-7.,-.40)$) {\includegraphics[height=10pt]{media/plus.png} Slack};
+\node[inner sep=5pt,anchor=north east,align=right] at ($(102018)+(9.,-1.40)$) {\includegraphics[height=10pt]{media/plus.png} KiCAD};
+\end{tikzpicture}	
+\end{document}

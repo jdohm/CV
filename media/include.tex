@@ -1,0 +1,93 @@
+%----------- Sprach und Codierungseinstellungen: ------------------------------------------%
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[autostyle=true,german=quotes]{csquotes}%für Anführungszeichen mit \enquote{text}
+%------------------------------------------------------------------------------------------%
+%------------------------------ Einstellungen für die Mathematikumgebung ------------------%
+\usepackage{amsmath,mathtools}%mathtools für \Aboxed, um eine Box in Mathe (z.B: Align zu machen, wo ein & drin ist...)
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cancel}%für das kürzen in Formeln \cancel{a^2}
+\usepackage{stmaryrd}%für lightning (blitz) widerstpruch 
+\usepackage{theorem}
+\usepackage{trfsigns}
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}%erm�glicht mit \Ccancel[color]{argument} farbiges durchstreichen
+\newcommand*{\mat}[1]{\begin{matrix}#1\end{matrix}}%matrix
+\newcommand*{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}%matrix in runden Klammern ()
+\newcommand*{\vmat}[1]{\begin{vmatrix}#1\end{vmatrix}}%Matrix in ||
+\newcommand*{\bmat}[1]{\begin{bmatrix}#1\end{bmatrix}}%Matrix in []
+\newcommand{\OP}[1]{\operatorname{#1}}%für "div, rot, grad, etc. in mathe
+\newcommand{\Part}[1]{\partial_{#1}}
+\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}%für \frac{\partial ?}{\partial ?}
+\newcommand{\ska}[1]{\relax\ifmmode\langle #1 \rangle \else $\langle #1 \rangle$\fi}%< > für Skalarprodukt
+\newcommand{\kon}[1]{\overline{#1}}%für überstrich bei komplexen Zahlen
+\newcommand{\Kon}[1]{#1^\ast}%für ^\ast für komplexe Zahlen 
+\newcommand{\E}[2]{#1 e^{\SI{#2 j}{\degree}}}
+\newcommand*{\DEG}[1]{\SI{#1}{\degree}}
+\newcommand{\ohne}[1]{\backslash\lbrace#1\rbrace}%für Mengen ohne etwas ergibt "\{Inhalt}"
+\newcommand{\set}[2]{\{#1\,|\,#2\}}
+\newcommand{\bigset}[2]{\bigl\{#1\,\big|\,#2\bigr\}}
+\newcommand{\biggset}[2]{\biggl\{#1\,\bigg|\,#2\biggr\}}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\Ln}{\OP{Ln}}
+\setcounter{MaxMatrixCols}{20}%um mehr als 10 Colums zu machen in einer Matrix
+\renewcommand{\Re}[1]{\text{Re}\lbrace#1\rbrace}%Realteil darstellen als Re{#1}
+\renewcommand{\Im}[1]{\text{Im}\lbrace#1\rbrace}%Imagin�rteil darstellen als Im{#1}
+\newcommand{\U}[1]{\underline{#1}}%Underline für Komplexe Zahlen in Kurzschreibweise
+\newcommand{\lap}[1]{\mathcal{L}\lbrace#1\rbrace}%Laplace "L"{#1}
+\newcommand{\lapm}[1]{\mathcal{L}^{-1}\lbrace#1\rbrace}%Laplace "L"^{-1}{#1}
+\mathcode`\*="8000 {\catcode`\*\active\gdef*{\cdot}}%macht aus * ein \cdot! :)
+%------------------------------------------------------------------------------------------%
+%------------------------------- Einheiten ------------------------------------------------%
+\usepackage[per-mode=fraction,binary-units,locale=DE,complex-root-position = before-number]{siunitx}
+%für das einfügen von Einheiten z.b. \si{\ohm} | per-mode=symbol setzt / anstelle von ^{-1}; fraction setzt \frac
+%binary-units allows \bit \mibi etc
+%locale=DE switches \num{1.5} to 1,5 ...
+\sisetup{output-complex-root=\ensuremath{\mathrm{j}}}
+%nutzt für imaginäre Zahlen das j, wie in der Elektrotechnik üblich
+%------------------------------------------------------------------------------------------%
+%------------------------------- Zeichnungen ----------------------------------------------%
+\usepackage{tikz}
+\usetikzlibrary{3d}
+\usepackage[european, siunitx, nooldvoltagedirection]{circuitikz}
+%ermöglicht das Zeichnen von Schaltplänen in tikzpicture z.b.(0,0) to[R=$R_1$,v=$1\si{\volt}$] (2,0);
+%european für europäische Symbole (z.B. Resistor)
+%siunitx um mit 5<A> die korrekte Schreibweise innerhalb von Stromlaufplänen zu erhalten
+\usetikzlibrary{decorations.pathmorphing}%für snake arrow
+\usepackage{graphicx}% um Bilder einbinden zu können 
+\usepackage{float}%für das Darstellen von figures, bildern etc an genau diesem Ort [H]
+\usepackage{animate}%für Animationen
+\newcommand\arr[1][0]{node[inputarrow,rotate=#1]{}}%ermöglicht in Tikz mit dem Paket circuitikz das einfügen einer Pfeilspitze an der aktuellen Position \arr zeigt nach rechts, \arr[90] nach oben...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Farben BUW
+\xdefinecolor{BUW_Gr}{cmyk}{0.52,0,1,0.05} %Pantone 376
+\xdefinecolor{BUW_Gr_Light}{cmyk}{0.041,0,0.127,0.039}
+\xdefinecolor{BUW_Gr_Dark}{cmyk}{0.34,0,1,0.6}
+\xdefinecolor{BUW_Or}{cmyk}{0,0.412,1,0}
+\xdefinecolor{BUW_Bl}{cmyk}{0.295,0.142,0,0.31}
+\xdefinecolor{BUW_Bl_Light}{cmyk}{0.053,0.016,0,0.035}
+\xdefinecolor{BUW_Bl_Dark}{cmyk}{0.47,0.351,0,0.475}
+\xdefinecolor{light-gray}{gray}{0.80}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------------------------------%
+%------------------------------- PDF ------------------------------------------------------%
+\usepackage[final]{pdfpages}%für das Einfügen von PDF-Seiten \includepdf[page=1-2,nup=1x2]{filename}
+\usepackage{hyperref}%links (z.B. für Kapitel im PDF)
+%------------------------------------------------------------------------------------------%
+%------------------------------- Strucktur ------------------------------------------------%
+\usepackage{enumerate}%für enumerate mit [a],[1],[i] etc, argument.
+\setlength{\parindent}{0pt}%nach leerzeile Einrückung nach außen, statt nach innen
+\setcounter{tocdepth}{3}%Tiefe des Inhalsverzeichnisses
+\usepackage{titling}%Zur gestaltung der Titelseite
+\usepackage[automark,headsepline,plainheadsepline]{scrlayer-scrpage}           
+%Gestaltung von Kopf- und Fusszeilen, headsepline Schaltet die Trennlinie unterhalb der Kopfzeile ein
+%------------------------------------------------------------------------------------------%
+%------------------------------- Gestaltung der Kopf und Fusszeile ------------------------%
+\chead[]{}	
+  \ohead[]{\headmark}	% Kolumnentitel in der Kopfzeile aussen 
+  %\lohead[{\includegraphics[height=2em]{media/Uni_Wuppertal_Logo.pdf}}]{\includegraphics[height=2em]{media/Uni_Wuppertal_Logo.pdf}}	%Auf der rechten Seite innen im Kopf  das Uni Logo
+  \rehead[~\\~]{~\\~}
+  \cfoot[\pagemark]{\pagemark} %Fußzeile mittig - Seitenzahl
+  \ofoot[]{} %Fußzeile aussen
+  \ifoot[]{} %Fußzeile innen
+%------------------------------------------------------------------------------------------%
